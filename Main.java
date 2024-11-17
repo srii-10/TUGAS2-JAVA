@@ -87,7 +87,7 @@ public class Main {
     }
 
     public static void showPemesanan() {
-        System.out.println("== DAFTAR MENU SUNG RESTO ==");
+        System.out.println("== DAFTAR MENU SAUNG RESTO ==");
         displayMenu();
 
         // Start taking orders
