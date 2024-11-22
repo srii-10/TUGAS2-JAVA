@@ -29,12 +29,16 @@ class Menu {
     }
 }
 
+// Class Main
 public class Main {
     public static Menu[] menuList = {
+        // Kategori makanan
         new Menu("Nasi Goreng", 15000, "Makanan"),
         new Menu("Seafood", 50000, "Makanan"),
         new Menu("Pecel", 15000, "Makanan"),
         new Menu("Bakso", 20000, "Makanan"),
+
+        // Kategori minuman
         new Menu("Air mineral", 7000, "Minuman"),
         new Menu("Jus Buah", 12000, "Minuman"),
         new Menu("Es Teh", 8000, "Minuman"),
@@ -44,6 +48,7 @@ public class Main {
     private static final DecimalFormat format = new DecimalFormat("#,###.00");
     private static Scanner scanner = new Scanner(System.in);
 
+    // Untuk menampilkan menu sesuai kategori
     public static void displayMenu() {
         System.out.println("Makanan: ");
         for (Menu menu : menuList) {
@@ -59,6 +64,7 @@ public class Main {
         }
     }
 
+    // Untuk menampilkan menu utama
     public static void showMenuUtama() {
         boolean running = true;
 
@@ -86,6 +92,7 @@ public class Main {
         }
     }
 
+    // Untuk menampilkan pilihan pemesanan pada menu utama
     public static void showPemesanan() {
         System.out.println("== DAFTAR MENU SAUNG RESTO ==");
         displayMenu();
@@ -99,6 +106,7 @@ public class Main {
         printReceipt(orderedItems, quantities, totalCost);
     }
 
+    // Untuk menampilkan pilihan manajemen menu untuk pemilik restoran
     public static void showManajemenMenu() {
         boolean running = true;
 
@@ -129,6 +137,7 @@ public class Main {
         }
     }
 
+    // Fungsi untuk menambah menu bagi pemilik restoran
     public static void tambahMenu() {
         System.out.println("=== TAMBAH MENU ===");
         System.out.println("MENU YANG TERSEDIA SAAT INI");
@@ -149,6 +158,7 @@ public class Main {
         System.out.println("Menu berhasil ditambahkan!");
     }
 
+    // Fungsi untuk mengubah harga menu bagi pemilik restoran
     public static void ubahHargaMenu() {
         System.out.println("=== UBAH HARGA MENU ===");
         System.out.println("MENU YANG TERSEDIA SAAT INI");
@@ -176,6 +186,7 @@ public class Main {
         }
     }
 
+    // Fungsi untuk menghapus menu bagi pemilik restoran
     public static void hapusMenu() {
         System.out.println("=== HAPUS MENU ===");
         System.out.println("MENU YANG TERSEDIA SAAT INI");
@@ -202,6 +213,7 @@ public class Main {
         }
     }
 
+    // Fungsi untuk menghitung total harga makanan yang dipesan oleh pelanggan
     public static double calculateTotalCost(String[] orderedItems, int[] quantities) {
         double totalCost = 0;
         for (int i = 0; i < orderedItems.length; i++) {
@@ -214,6 +226,7 @@ public class Main {
         return totalCost;
     }
 
+    // Fungsi untuk menghitung diskon 10%
     public static double applyDiscount(double totalCost) {
         if (totalCost > 100000) {
             return totalCost * 0.1; // DISKON 10%
@@ -221,6 +234,7 @@ public class Main {
         return 0;
     }
 
+    // Fungsi untuk mencetak struk pembayaran
     public static void printReceipt(String[] orderedItems, int[] quantities, double totalCost) {
         double serviceFee = 20000; // biaya pelayanan
         
@@ -236,8 +250,8 @@ public class Main {
         }
 
         System.out.println("\nTotal Biaya Pesanan: Rp " + format.format(totalCost));
-
- double kopiLatteDiscount = 0;
+        
+        double kopiLatteDiscount = 0;
         int kopiLatteCount = 0;
         for (int i = 0; i < orderedItems.length; i++) {
             if (orderedItems[i] != null && orderedItems[i].equalsIgnoreCase("Kopi Latte")) {
@@ -276,6 +290,7 @@ public class Main {
         showMenuUtama();
     }
 
+    // Untuk menginput pesanan bagi pelanggan
     private static void takeOrder(String[] orderedItems, int[] quantities, int itemCount) {
         System.out.print("Pesanan " + (itemCount + 1) + ": ");
         String itemNama = scanner.nextLine();
